@@ -1,0 +1,25 @@
+# devs: nix-shell
+export NIX_PATH=nixpkgs=/home/mmchenry/git/nixos/nixpkgs
+https://pijul.org/
+pijul --version
+nix-shell -p pijul
+  --run 'pijul --version'
+python --version
+nix-shell -p python313 --run 'python --version'
+nix-shell -p python312 --run 'python --version'
+nix-shell -p nodejs_24 --run 'node --version'
+nix-shell -p jdk25 --run 'java -version'
+echo $PATH | tr ':' '\n'
+nix-shell -p jdk8 pijul python312 nodejs_26
+
+# teams: shell.nix, default.nix
+ghcide --version
+cd ~/git/elbum
+pygmentize shell.nix
+cd src/generator/
+codium .
+cd ../../
+pygmentize default.nix
+pygmentize src/client/default.nix
+nix-build
+
